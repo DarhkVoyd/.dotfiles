@@ -1,12 +1,16 @@
-# Alias
-alias vim=nvim
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias cd="z"
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+# https://www.freecodecamp.org/news/how-do-zsh-configuration-files-work/#:~:text=zprofile%20again.,subshell%20from%20a%20terminal%20window.
+# PATH should be set in  ~/.zprofile and not the universal ~/.zshenv file: the macOS runs a utility path_helper (from /etc/zprofile) that sets the PATH order before ~/.zprofile is loaded.
 
 # Bin
 source ~/fzf-git.sh/fzf-git.sh
+
+# Interactive Login Shells
+eval "$(/opt/homebrew/bin/brew shellenv)"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
 
 # Keymap
 bindkey -s ^f "tmux-sessionizer\n"

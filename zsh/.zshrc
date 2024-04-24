@@ -4,6 +4,13 @@ ZSH_THEME="robbyrussell"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 source $ZSH/oh-my-zsh.sh
 
+# Alias
+alias vim=nvim
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias cd="z"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+
 # bun completions
 [ -s "/Users/voyd/.bun/_bun" ] && source "/Users/voyd/.bun/_bun"
 
@@ -14,13 +21,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # VOLTA
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-eval "$(zoxide init zsh)"
-eval "$(fzf --zsh)"
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
