@@ -42,7 +42,22 @@ return {
 
 		telescope.load_extension("fzf")
 
-		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
+		vim.keymap.set("n", "<leader>ff", function()
+			builtin.find_files({
+				find_command = {
+					"rg",
+					"--no-ignore",
+					"--hidden",
+					"--files",
+					"--iglob",
+					"!**/.git/*",
+					"--iglob",
+					"!**/node_modules/*",
+					"--iglob",
+					"!**/.next/*",
+				},
+			})
+		end, { desc = "Fuzzy find files in cwd" })
 		vim.keymap.set("n", "<leader>fgf", builtin.git_files, { desc = "Fuzzy find files in git" })
 		vim.keymap.set("n", "<leader>fws", function()
 			local word = vim.fn.expand("<cword>")
