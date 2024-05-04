@@ -48,3 +48,22 @@ _fzf_comprun() {
         *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
     esac
 }
+
+mkcd() {
+    # Prompt the user for input
+    echo -n "Enter the directory name: "
+    read directory_name
+
+    if [ -d "$directory_name" ]; then
+        echo "Directory '$directory_name' already exists. Changing to that directory."
+        cd "$directory_name" || return 1
+    else
+        if mkdir "$directory_name"; then
+            echo "Directory '$directory_name' created successfully."
+            cd "$directory_name" || { echo "Error: Failed to change to directory '$directory_name'."; return 1; }
+        else
+            echo "Error: Failed to create directory '$directory_name'."
+            return 1
+        fi
+    fi
+}

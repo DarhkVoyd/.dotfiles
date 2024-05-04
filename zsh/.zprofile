@@ -15,7 +15,7 @@ eval "$(fzf --zsh)"
 # Keymap
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^a "tmux a\n"
-bindkey -s ^n ". mkcd\n"
+bindkey -s ^n "mkcd\n"
 bindkey -s ^i "tmux-cht\n"
 
 # PATH
