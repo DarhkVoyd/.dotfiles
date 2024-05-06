@@ -55,6 +55,10 @@ return {
 					"!**/node_modules/*",
 					"--iglob",
 					"!**/.next/*",
+					"--iglob",
+					"!**/venv/*",
+					"--iglob",
+					"!**/__pycache__/*",
 				},
 			})
 		end, { desc = "Fuzzy find files in cwd" })
