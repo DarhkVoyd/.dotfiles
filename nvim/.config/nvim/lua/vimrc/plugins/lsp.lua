@@ -113,7 +113,8 @@ return {
 				"eslint_d", -- js linter
 			},
 		})
-
+		require("lint").linters.pylint.cmd = "python"
+		require("lint").linters.pylint.args = { "-m", "pylint", "-f", "json" }
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
