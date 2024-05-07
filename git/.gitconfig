@@ -1,0 +1,22 @@
+[user]
+	email = divyadityasnaruka@gmail.com
+	name = D V
+
+[core]
+	excludesfile = /Users/voyd/.gitignore
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[merge]
+	conflictstyle = diff3
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f
+
+[diff]
+	colorMoved = default
