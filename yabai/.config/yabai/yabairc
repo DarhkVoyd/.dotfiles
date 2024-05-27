@@ -42,6 +42,7 @@ yabai -m rule --add app="^iTerm$" space=code
 yabai -m rule --add app="^Google Chrome$" space=chrome
 yabai -m rule --add app="^Spotify$" space=spotify
 yabai -m rule --add app="^Notion$" space=notion
+yabai -m rule --add app="^Excalidraw$" space=excalidraw
 
 # disable specific apps
 yabai -m rule --add app="^System Settings$" manage=off
