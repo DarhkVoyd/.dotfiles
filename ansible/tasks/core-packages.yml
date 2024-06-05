@@ -1,0 +1,68 @@
+- name: Install Homebrew
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  args:
+    creates: /opt/homebrew/bin/brew # Assumes Homebrew will be installed in /opt/homebrew
+
+- name: Install Homebrew casks
+  homebrew:
+    name: "{{ item }}"
+    state: present
+    cask: yes
+  loop:
+    - iterm2
+    - raycast
+  tags: brew_casks
+
+- name: Tap Homebrew cask-fonts
+  homebrew_tap:
+    name: homebrew/cask-fonts
+
+- name: Install Homebrew packages
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - font-meslo-lg-nerd-font
+    - neovim
+    - ripgrep
+    - node
+    - stow
+    - fzf
+    - fd
+    - pyenv
+    - pyenv-virtualenv
+    - bat
+    - git-delta
+    - eza
+    - tldr
+    - zoxide
+    - jesseduffield/lazygit/lazygit
+    - koekeishiya/formulae/yabai
+    - koekeishiya/formulae/skhd
+    - postgresql
+  tags: brew_packages
+
+- name: Clone fzf-git.sh repository
+  git:
+    repo: https://github.com/junegunn/fzf-git.sh.git
+    dest: ~/fzf-git.sh
+
+- name: Create themes directory for bat
+  file:
+    path: "{{ lookup('pipe', 'bat --config-dir') }}/themes"
+    state: directory
+
+- name: Download Tokyonight theme for bat
+  get_url:
+    url: https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_night.tmTheme
+    dest: "{{ lookup('pipe', 'bat --config-dir') }}/themes/tokyonight_night.tmTheme"
+
+- name: Ensure Homebrew services are started and enabled
+  homebrew_services:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - yabai
+    - skhd
+  tags: brew_services

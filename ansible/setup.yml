@@ -1,0 +1,5 @@
+- hosts: localhost
+  tasks:
+    - include: tasks/core-packages.yml
+    - include: tasks/npm-packages.yml
+    - include: tasks/dotfiles.yml

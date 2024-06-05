@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Set default value for STOW_FOLDERS if it is not already set
+if [[ -z $STOW_FOLDERS ]]; then
+    STOW_FOLDERS="bin,fzf-git,git,iterm,nvim,skhd,tmux,yabai,zsh"
+fi
+
+# Set default value for DOTFILES if it is not already set
+if [[ -z $DOTFILES ]]; then
+    DOTFILES=$HOME/.dotfiles
+fi
+
+# Navigate to the DOTFILES directory
+pushd $DOTFILES
+
+# Loop through each folder in STOW_FOLDERS, converting the comma-separated string to space-separated
+for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+do
+    echo "stow $folder"
+    # Unstow and then restow each folder
+    stow -D $folder
+    stow $folder
+done
+
+# Return to the previous directory
+popd
