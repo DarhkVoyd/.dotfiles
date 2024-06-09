@@ -12,6 +12,7 @@ return {
 
 	config = function()
 		local telescope = require("telescope")
+		local telescopeConfig = require("telescope.config")
 		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
 		local transform_mod = require("telescope.actions.mt").transform_mod
@@ -26,8 +27,21 @@ return {
 			end,
 		})
 
+		local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+		table.insert(vimgrep_arguments, "--hidden")
+		table.insert(vimgrep_arguments, "--iglob")
+		table.insert(vimgrep_arguments, "!**/.git/*")
+		table.insert(vimgrep_arguments, "--iglob")
+		table.insert(vimgrep_arguments, "!**/node_modules/*")
+		table.insert(vimgrep_arguments, "--iglob")
+		table.insert(vimgrep_arguments, "!**/.next/*")
+		table.insert(vimgrep_arguments, "--iglob")
+		table.insert(vimgrep_arguments, "!**/venv/*")
+		table.insert(vimgrep_arguments, "--iglob")
+		table.insert(vimgrep_arguments, "!**/__pycache__/*")
 		telescope.setup({
 			defaults = {
+				vimgrep_arguments = vimgrep_arguments,
 				path_display = { "smart" },
 				mappings = {
 					i = {
