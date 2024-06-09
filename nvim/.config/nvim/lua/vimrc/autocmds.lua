@@ -4,6 +4,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local whitespace_cleanup_group = augroup("WhitespaceCleanup", {})
 local yank_highlight_group = augroup("YankHighlight", {})
 local user_lsp_config_group = augroup("UserLspConfig", {})
+local jsDevGroup = augroup("jsDevGroup", {})
 
 function R(name)
 	require("plenary.reload").reload_module(name)
@@ -24,6 +25,12 @@ autocmd("BufWritePre", {
 	group = whitespace_cleanup_group,
 	pattern = "*",
 	command = [[%s/\s\+$//e]],
+})
+
+autocmd("BufWritePre", {
+	group = jsDevGroup,
+	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+	command = "silent! EslintFixAll",
 })
 
 autocmd("LspAttach", {
