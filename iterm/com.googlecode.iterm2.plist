@@ -565,7 +565,7 @@
 				</dict>
 			</dict>
 			<key>Mouse Reporting</key>
-			<false/>
+			<true/>
 			<key>Name</key>
 			<string>iTerm</string>
 			<key>Non Ascii Font</key>
