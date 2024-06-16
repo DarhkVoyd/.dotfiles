@@ -27,11 +27,11 @@ autocmd("BufWritePre", {
 	command = [[%s/\s\+$//e]],
 })
 
-autocmd("BufWritePre", {
-	group = jsDevGroup,
-	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
-	command = "silent! EslintFixAll",
-})
+-- autocmd("BufWritePre", {
+-- 	group = jsDevGroup,
+-- 	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+-- 	command = "silent! EslintFixAll",
+-- })
 
 autocmd("LspAttach", {
 	group = user_lsp_config_group,

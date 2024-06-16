@@ -54,7 +54,6 @@ return {
 				"rust_analyzer",
 				"tsserver",
 				"tailwindcss",
-				"eslint",
 				"gopls",
 				"html",
 				"cssls",
