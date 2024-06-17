@@ -105,5 +105,8 @@ autocmd("LspAttach", {
 
 		opts.desc = "Restart LSP"
 		vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+
+		opts.desc = "Format file with LSP"
+		vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
 	end,
 })
