@@ -74,12 +74,12 @@ autocmd("LspAttach", {
 		end, opts)
 
 		opts.desc = "Go to next diagnostics"
-		vim.keymap.set("n", "[d", function()
+		vim.keymap.set("n", "]d", function()
 			vim.diagnostic.goto_next()
 		end, opts)
 
 		opts.desc = "Go to previous diagnostics"
-		vim.keymap.set("n", "]d", function()
+		vim.keymap.set("n", "[d", function()
 			vim.diagnostic.goto_prev()
 		end, opts)
 
