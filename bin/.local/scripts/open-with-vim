@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    exit 1
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _ )
+
+osascript <<EOF
+tell application "iTerm"
+    if (count of windows) = 0 then
+        create window with default profile
+    end if
+    tell current session of current window
+        set cmd to "if [[ -d '$selected' ]]; then
+            selected_name='$selected_name'
+            if [[ -z \$TMUX ]]; then  # Outside tmux
+                if tmux has-session -t \$selected_name 2>/dev/null; then
+                    tmux attach-session -t \$selected_name  # Attach if session exists
+                else
+                    tmux new-session -s \$selected_name -c '$selected'  # Create if not
+                fi
+            else  # Inside tmux
+                if ! tmux has-session -t \$selected_name 2>/dev/null; then
+                    tmux new-session -ds \$selected_name -c '$selected'
+                fi
+                tmux switch-client -t \$selected_name
+            fi
+        else
+            selected_name='$selected_name'
+            if [[ -z \$TMUX ]]; then  # Outside tmux
+                if tmux has-session -t \$selected_name 2>/dev/null; then
+                    tmux attach-session -t \$selected_name  # Attach if session exists
+                else
+                    tmux new-session -s \$selected_name -c '$PWD' 'nvim $selected'  # Create new session and open file in Vim
+                fi
+            else  # Inside tmux
+                if ! tmux has-session -t \$selected_name 2>/dev/null; then
+                    tmux new-session -ds \$selected_name -c '$PWD' 'nvim $selected'
+                fi
+                tmux switch-client -t \$selected_name
+            fi
+        fi"
+        write text cmd
+    end tell
+end tell
+EOF
