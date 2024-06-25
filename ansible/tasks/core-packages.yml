@@ -40,6 +40,7 @@
     - koekeishiya/formulae/yabai
     - koekeishiya/formulae/skhd
     - postgresql
+    - circleci
   tags: brew_packages
 
 - name: Clone fzf-git.sh repository
