@@ -32,6 +32,8 @@ return {
 		table.insert(vimgrep_arguments, "--iglob")
 		table.insert(vimgrep_arguments, "!**/.git/*")
 		table.insert(vimgrep_arguments, "--iglob")
+		table.insert(vimgrep_arguments, "!**/dist/*")
+		table.insert(vimgrep_arguments, "--iglob")
 		table.insert(vimgrep_arguments, "!**/node_modules/*")
 		table.insert(vimgrep_arguments, "--iglob")
 		table.insert(vimgrep_arguments, "!**/.next/*")
@@ -65,6 +67,8 @@ return {
 					"--files",
 					"--iglob",
 					"!**/.git/*",
+					"--iglob",
+					"!**/dist/*",
 					"--iglob",
 					"!**/node_modules/*",
 					"--iglob",
