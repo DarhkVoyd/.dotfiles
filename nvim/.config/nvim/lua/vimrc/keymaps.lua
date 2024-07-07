@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 
 -- General Keymaps
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open file explorer" })
+vim.keymap.set("n", "<leader><leader>", vim.cmd.Ex, { desc = "Open file explorer" })
 
 -- Editor Keymaps
 
@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>uch", "<cmd>!chmod -x %<CR>", { silent = true, desc
 
 -- Source Vimrc Keymaps
 vim.keymap.set("n", "<leader>vc", "<cmd>e ~/.config/nvim/lua/vimrc/<CR>", { desc = "Open vimrc file" })
-vim.keymap.set("n", "<leader><leader>", function()
+vim.keymap.set("n", "<leader>vs", function()
 	vim.cmd("so")
 end, { desc = "Source vimrc" })
 
