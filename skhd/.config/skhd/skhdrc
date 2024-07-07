@@ -1,4 +1,17 @@
-# -- Changing Window Focus --
+# -- Yabai Keymaps --
+
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - s : yabai --start-service
+ctrl + alt - r : yabai --restart-service
+
+# -- Window Keymaps: Behaviour --
+
+# Toggle window float
+shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+# Maximize a window
+shift + alt - m : yabai -m window --toggle zoom-fullscreen
+
+# -- Window Keymaps: Focus --
 
 # Change window focus within space
 alt - k : yabai -m window --focus north
@@ -12,7 +25,18 @@ alt - d: yabai -m display --focus east
 alt - a: yabai -m display --focus west
 alt - s: yabai -m display --focus south
 
-# -- Moving Windows Around --
+# -- Window Keymaps: Layout --
+
+# Balance out tree of windows (resize to occupy same area)
+shift + alt - e : yabai -m space --balance
+# Flip layout along y-axis
+shift + alt - y : yabai -m space --mirror y-axis
+# Flip layout along x-axis
+shift + alt - x : yabai -m space --mirror x-axis
+# Rotate layout clockwise
+shift + alt - r : yabai -m space --rotate 270
+
+# -- Window Keymaps: Movement --
 
 # Swap windows within space
 shift + alt - k : yabai -m window --swap north
@@ -46,27 +70,3 @@ shift + alt - w : yabai -m window --display north; yabai -m display --focus nort
 shift + alt - d : yabai -m window --display east; yabai -m display --focus east;
 shift + alt - a : yabai -m window --display west; yabai -m display --focus west;
 shift + alt - s : yabai -m window --display south; yabai -m display --focus south;
-
-# -- Modifying Window --
-
-# Toggle window float
-shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-# Maximize a window
-shift + alt - m : yabai -m window --toggle zoom-fullscreen
-
-# -- Modifying Space Layout --
-
-# Balance out tree of windows (resize to occupy same area)
-shift + alt - e : yabai -m space --balance
-# Flip layout along y-axis
-shift + alt - y : yabai -m space --mirror y-axis
-# Flip layout along x-axis
-shift + alt - x : yabai -m space --mirror x-axis
-# Rotate layout clockwise
-shift + alt - r : yabai -m space --rotate 270
-
-# -- Starting/Stopping/Restarting Yabai --
-
-ctrl + alt - q : yabai --stop-service
-ctrl + alt - s : yabai --start-service
-ctrl + alt - r : yabai --restart-service
