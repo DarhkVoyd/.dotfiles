@@ -54,16 +54,12 @@ mkcd() {
     echo -n "Enter the directory name: "
     read directory_name
 
-    if [ -d "$directory_name" ]; then
-        echo "Directory '$directory_name' already exists. Changing to that directory."
-        cd "$directory_name" || return 1
+    # Use mkdir -p to create the directory and any necessary parent directories
+    if mkdir -p "$directory_name"; then
+        echo "Directory '$directory_name' created successfully or already exists."
+        cd "$directory_name" || { echo "Error: Failed to change to directory '$directory_name'."; return 1; }
     else
-        if mkdir "$directory_name"; then
-            echo "Directory '$directory_name' created successfully."
-            cd "$directory_name" || { echo "Error: Failed to change to directory '$directory_name'."; return 1; }
-        else
-            echo "Error: Failed to create directory '$directory_name'."
-            return 1
-        fi
+        echo "Error: Failed to create directory '$directory_name'."
+        return 1
     fi
 }
