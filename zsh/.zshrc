@@ -23,9 +23,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# Default Editor
-export VISUAL=nvim
-export EDITOR="$VISUAL"
+# Default Editor -- Enabling this causes my tmux to not trigger zsh keybindings for stupid reason
+# export VISUAL=nvim
+# export EDITOR="$VISUAL"
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
