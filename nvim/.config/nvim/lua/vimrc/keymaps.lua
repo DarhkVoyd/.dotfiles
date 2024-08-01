@@ -12,6 +12,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result and center" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result and center" })
+vim.keymap.set("n", "<C-i>", "<C-o>", { noremap = true, silent = true, desc = "Go to previous location" })
+vim.keymap.set("n", "<C-o>", "<C-i>", { noremap = true, silent = true, desc = "Go to next location" })
 
 -- Visual Mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
