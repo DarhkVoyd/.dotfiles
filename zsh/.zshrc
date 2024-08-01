@@ -10,6 +10,7 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 alias cd="z"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias pn=pnpm
 
 # bun completions
 [ -s "/Users/voyd/.bun/_bun" ] && source "/Users/voyd/.bun/_bun"
