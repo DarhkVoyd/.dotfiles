@@ -21,3 +21,15 @@
 
 [diff]
 	colorMoved = default
+
+
+[alias]
+    create-local-branches = "!f() { \
+        git fetch origin; \
+        for branch in $(git branch -r | grep '^\\s*origin/' | grep -v '\\->' | grep -v 'origin/HEAD' | grep -v 'origin/main' | grep -v 'origin/master'); do \
+            local_branch=$(echo $branch | sed 's/origin\\///'); \
+            echo \"Creating local branch $local_branch from $branch\"; \
+            git checkout -b $local_branch $branch; \
+        done; \
+        git checkout main; \
+    }; f"
