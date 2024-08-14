@@ -22,18 +22,15 @@ yabai -m config window_placement second_child
 yabai -m space 1 --label home
 yabai -m space 2 --label safari
 yabai -m space 3 --label unknown
-yabai -m space 4 --label chrome
+yabai -m space 4 --label browser
 yabai -m space 5 --label spotify
-yabai -m space 6 --label excalidraw
-yabai -m space 7 --label notion
-yabai -m space 8 --label code
+yabai -m space 6 --label code
 
 # Assign apps to spaces by label
 yabai -m rule --add app="^Safari$" space=safari
-yabai -m rule --add app="^Google Chrome$" space=chrome
+yabai -m rule --add app="^Google Chrome$" space=browser
+yabai -m rule --add app="^Firefox$" space=browser
 yabai -m rule --add app="^Spotify$" space=spotify
-yabai -m rule --add app="^Notion$" space=notion
-yabai -m rule --add app="^Excalidraw$" space=excalidraw
 yabai -m rule --add app="^iTerm$" space=code
 
 # -- Window Behaviour --
