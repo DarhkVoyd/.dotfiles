@@ -21,10 +21,10 @@ yabai -m config window_placement second_child
 # Add labels to spaces
 yabai -m space 1 --label home
 yabai -m space 2 --label safari
-yabai -m space 3 --label unknown
+yabai -m space 3 --label code
 yabai -m space 4 --label browser
 yabai -m space 5 --label spotify
-yabai -m space 6 --label code
+yabai -m space 6 --label unknown
 
 # Assign apps to spaces by label
 yabai -m rule --add app="^Safari$" space=safari
