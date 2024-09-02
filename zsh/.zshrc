@@ -1,71 +1,44 @@
-# ZSH
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
-source $ZSH/oh-my-zsh.sh
+# .zshrc
+# https://www.freecodecamp.org/news/how-do-zsh-configuration-files-work/#:~:text=zprofile%21again.,subshell%20from%20a%20terminal%20window
 
-# Alias
-alias vim=nvim
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias cd="z"
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias pn=pnpm
+# Set up ZSH Plugins
+source ~/.zsh_plugins/oh-my-zsh.sh
+source ~/.zsh_plugins/homebrew.sh
+source ~/.zsh_plugins/zoxide.sh
+source ~/.zsh_plugins/fzf.sh
+source ~/.zsh_plugins/fzf-git.sh
+source ~/.zsh_plugins/pyenv.sh
+source ~/.zsh_plugins/mkcd.sh
 
-# bun completions
-[ -s "/Users/voyd/.bun/_bun" ] && source "/Users/voyd/.bun/_bun"
+# Set up BAT
+export BAT_THEME=tokyonight_night
 
-# bun
+# Set up custom scripts
+export SCRIPTS_HOME="$HOME/.local/scripts"
+export PATH="$SCRIPTS_HOME:$SCRIPTS_HOME/tmux-cht:$PATH"
+
+# Set up Bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "/Users/voyd/.bun/_bun" ] && source "/Users/voyd/.bun/_bun"
 
-# VOLTA
+# Set up Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# Aliases
+alias cd="z"
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias pn=pnpm
+alias vim=nvim
+alias zshconfig="vim ~/.zshrc"
+
+# Keymaps
+bindkey -s ^a "tmux a\n"
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^n "mkcd\n"
 
 # Default Editor -- Enabling this causes my tmux to not trigger zsh keybindings for stupid reason
 # export VISUAL=nvim
 # export EDITOR="$VISUAL"
-
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
-
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
-_fzf_comprun() {
-    local command=$1
-    shift
-
-    case "$command" in
-        cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-        export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-        ssh)          fzf --preview 'dig {}'                   "$@" ;;
-        *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-    esac
-}
-
-mkcd() {
-    # Prompt the user for input
-    echo -n "Enter the directory name: "
-    read directory_name
-
-    # Use mkdir -p to create the directory and any necessary parent directories
-    if mkdir -p "$directory_name"; then
-        # echo "Directory '$directory_name' created successfully or already exists."
-        echo "DONE!"
-        cd "$directory_name" || { echo "Error: Failed to change to directory '$directory_name'."; return 1; }
-    else
-        echo "Error: Failed to create directory '$directory_name'."
-        return 1
-    fi
-}
