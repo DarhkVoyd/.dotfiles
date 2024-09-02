@@ -8,6 +8,7 @@ source ~/.zsh_plugins/zoxide.sh
 source ~/.zsh_plugins/fzf.sh
 source ~/.zsh_plugins/fzf-git.sh
 source ~/.zsh_plugins/pyenv.sh
+source ~/.zsh_plugins/history.sh
 source ~/.zsh_plugins/mkcd.sh
 
 # Set up BAT
