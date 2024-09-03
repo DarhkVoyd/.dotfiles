@@ -38,7 +38,7 @@ autocmd("LspAttach", {
 	callback = function(e)
 		local opts = { buffer = e.buf }
 
-		opts.desc = "Show LSP references"
+		opts.desc = "[G]oto [R]eferences"
 		vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
 		opts.desc = "Go to declaration"
@@ -46,10 +46,10 @@ autocmd("LspAttach", {
 			vim.lsp.buf.declaration()
 		end, opts)
 
-		opts.desc = "Show LSP definitions"
+		opts.desc = "[G]oto [D]efinition"
 		vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
-		opts.desc = "Show LSP implementations"
+		opts.desc = "[G]oto [I]mplementation"
 		vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 
 		opts.desc = "Show LSP type definitions"
@@ -83,7 +83,7 @@ autocmd("LspAttach", {
 			vim.diagnostic.goto_prev()
 		end, opts)
 
-		opts.desc = "See available code actions"
+		opts.desc = "[C]ode [A]ction"
 		vim.keymap.set({ "n", "v" }, "<leader>ca", function()
 			vim.lsp.buf.code_action()
 		end, opts)
@@ -93,7 +93,7 @@ autocmd("LspAttach", {
 			vim.lsp.buf.references()
 		end, opts)
 
-		opts.desc = "Smart rename"
+		opts.desc = "[R]e[n]ame"
 		vim.keymap.set("n", "<leader>rn", function()
 			vim.lsp.buf.rename()
 		end, opts)

@@ -51,7 +51,7 @@ vim.keymap.set("n", "<leader>ch", "<cmd>!chmod +x %<CR>", { silent = true, desc 
 vim.keymap.set("n", "<leader>uch", "<cmd>!chmod -x %<CR>", { silent = true, desc = "Make file non-executable" })
 
 -- Source Vimrc Keymaps
-vim.keymap.set("n", "<leader>vc", "<cmd>e ~/.config/nvim/lua/vimrc/<CR>", { desc = "Open vimrc file" })
+vim.keymap.set("n", "<leader>vc", "<cmd>e ~/.config/nvim/lua/<CR>", { desc = "Open vimrc file" })
 vim.keymap.set("n", "<leader>vs", function()
 	vim.cmd("so")
 end, { desc = "Source vimrc" })

@@ -79,7 +79,7 @@ return {
 					"!**/__pycache__/*",
 				},
 			})
-		end, { desc = "Fuzzy find files in cwd" })
+		end, { desc = "[S]earch [F]iles" })
 		vim.keymap.set("n", "<leader>fgf", builtin.git_files, { desc = "Fuzzy find files in git" })
 		vim.keymap.set("n", "<leader>fws", function()
 			local word = vim.fn.expand("<cword>")
@@ -93,6 +93,13 @@ return {
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end, { desc = "Grep string" })
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy find help tags" })
+		vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 		vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+		vim.keymap.set(
+			"n",
+			"<leader><tab>",
+			"<Cmd>lua require('telescope.builtin').commands()<CR>",
+			{ desc = "Find commands" }
+		)
 	end,
 }

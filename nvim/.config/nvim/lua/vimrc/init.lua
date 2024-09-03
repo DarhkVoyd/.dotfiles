@@ -1,5 +1,0 @@
-require("vimrc.netrw")
-require("vimrc.editor")
-require("vimrc.autocmds")
-require("vimrc.keymaps")
-require("vimrc.manager")

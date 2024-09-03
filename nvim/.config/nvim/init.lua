@@ -1,1 +1,5 @@
-require("vimrc")
+require("autocmds")
+require("editor")
+require("keymaps")
+require("manager")
+require("netrw")

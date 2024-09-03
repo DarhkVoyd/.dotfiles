@@ -136,10 +136,29 @@ return {
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
+				["<Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif require("luasnip").expand_or_jumpable() then
+						require("luasnip").expand_or_jump()
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif require("luasnip").jumpable(-1) then
+						require("luasnip").jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users.
+				{ name = "neorg" },
 			}, {
 				{ name = "buffer" },
 				{ name = "path" },
