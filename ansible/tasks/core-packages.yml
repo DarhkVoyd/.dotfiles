@@ -11,6 +11,13 @@
   loop:
     - iterm2
     - raycast
+    - vlc
+    - hyperkey
+    - the-unarchiver
+    - google-chrome
+    - spotify
+    - docker
+    - visual-studio-code
   tags: brew_casks
 
 - name: Tap Homebrew cask-fonts
