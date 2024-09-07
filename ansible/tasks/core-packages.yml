@@ -46,7 +46,7 @@
     - jesseduffield/lazygit/lazygit
     - koekeishiya/formulae/yabai
     - koekeishiya/formulae/skhd
-    - postgresql
+    - postgresql@16
     - circleci
   tags: brew_packages
 

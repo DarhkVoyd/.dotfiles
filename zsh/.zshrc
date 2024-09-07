@@ -23,9 +23,14 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "/Users/voyd/.bun/_bun" ] && source "/Users/voyd/.bun/_bun"
 
+# Set up Postgres@16
+POSTGRES_INSTALL='/opt/homebrew/opt/postgresql@16'
+export PATH="$POSTGRES_INSTALL/bin:$PATH"
+
 # Set up Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
 
 # Aliases
 alias cd="z"
