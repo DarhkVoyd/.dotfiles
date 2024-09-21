@@ -24,14 +24,13 @@ yabai -m space 2 --label safari
 yabai -m space 3 --label code
 yabai -m space 4 --label browser
 yabai -m space 5 --label spotify
-yabai -m space 6 --label unknown
 
 # Assign apps to spaces by label
 yabai -m rule --add app="^Safari$" space=safari
 yabai -m rule --add app="^Google Chrome$" space=browser
 yabai -m rule --add app="^Firefox$" space=browser
 yabai -m rule --add app="^Spotify$" space=spotify
-yabai -m rule --add app="^iTerm$" space=code
+yabai -m rule --add app="^WezTerm$" space=code
 
 # -- Window Behaviour --
 
