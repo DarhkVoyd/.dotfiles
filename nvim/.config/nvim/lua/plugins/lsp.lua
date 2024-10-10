@@ -58,7 +58,6 @@ return {
 				"html",
 				"cssls",
 				"emmet_ls",
-				"prismals",
 				"pyright",
 			},
 			handlers = {
