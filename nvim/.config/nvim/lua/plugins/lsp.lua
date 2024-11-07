@@ -52,6 +52,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"rust_analyzer",
+				"denols",
 				"ts_ls",
 				"tailwindcss",
 				"gopls",
@@ -64,6 +65,25 @@ return {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+					})
+				end,
+
+				["ts_ls"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig["ts_ls"].setup({
+						capabilities = capabilities,
+						on_attach = on_attach,
+						root_dir = lspconfig.util.root_pattern("package.json"),
+						single_file_support = false,
+					})
+				end,
+
+				["denols"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.denols.setup({
+						capabilities = capabilities,
+						on_attach = on_attach,
+						root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 					})
 				end,
 
@@ -111,8 +131,8 @@ return {
 				"eslint_d", -- js linter
 			},
 		})
-		require("lint").linters.pylint.cmd = "python"
-		require("lint").linters.pylint.args = { "-m", "pylint", "-f", "json" }
+		-- require("lint").linters.pylint.cmd = "python"
+		-- require("lint").linters.pylint.args = { "-m", "pylint", "-f", "json" }
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
