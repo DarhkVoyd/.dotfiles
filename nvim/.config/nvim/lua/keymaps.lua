@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 
 -- General Keymaps
-vim.keymap.set("n", "<leader><leader>", vim.cmd.Ex, { desc = "Open file explorer" })
+-- vim.keymap.set("n", "<leader><leader>", vim.cmd.Ex, { desc = "Open file explorer" })
 
 -- Editor Keymaps
 
