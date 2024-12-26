@@ -10,6 +10,7 @@ source ~/.zsh_plugins/fzf-git.sh
 source ~/.zsh_plugins/pyenv.sh
 source ~/.zsh_plugins/history.sh
 source ~/.zsh_plugins/mkcd.sh
+source ~/.zsh_plugins/yazi.sh
 
 # Set up BAT
 export BAT_THEME=tokyonight_night
@@ -48,3 +49,5 @@ bindkey -s ^n "mkcd\n"
 # Default Editor -- Enabling this causes my tmux to not trigger zsh keybindings for stupid reason
 # export VISUAL=nvim
 # export EDITOR="$VISUAL"
+# Yes, I did read the note about but testing it out with Yazi.
+export EDITOR=nvim

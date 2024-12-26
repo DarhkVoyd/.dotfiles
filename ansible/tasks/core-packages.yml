@@ -48,6 +48,7 @@
     - koekeishiya/formulae/skhd
     - postgresql@16
     - circleci
+    - yazi
   tags: brew_packages
 
 - name: Clone fzf-git.sh repository
