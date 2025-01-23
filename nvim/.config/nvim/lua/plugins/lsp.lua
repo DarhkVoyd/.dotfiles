@@ -55,7 +55,6 @@ return {
 				"denols",
 				"ts_ls",
 				"tailwindcss",
-				"gopls",
 				"html",
 				"cssls",
 				"emmet_ls",
