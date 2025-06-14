@@ -49,6 +49,8 @@
     - postgresql@16
     - circleci
     - yazi
+    - colima
+    - docker
   tags: brew_packages
 
 - name: Clone fzf-git.sh repository
