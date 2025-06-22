@@ -1,9 +1,11 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+local home = wezterm.home_dir
+
 -- Font settings
 config.font = wezterm.font("MesloLGS Nerd Font Mono")
-config.font_size = 18
+config.font_size = 12
 config.freetype_load_flags = "FORCE_AUTOHINT"
 
 -- Window appearance and behavior
@@ -54,7 +56,7 @@ config.colors = {
 config.background = {
 	{
 		source = {
-			File = "/Users/voyd/.dotfiles/zsh/background.jpg",
+			File = home .. "/.dotfiles/zsh/background.jpg",
 		},
 		hsb = {
 			brightness = 0.025,
