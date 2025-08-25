@@ -24,6 +24,10 @@ return {
 				enable = true,
 			},
 
+			fold = {
+				enable = true,
+			},
+
 			incremental_selection = {
 				enable = true,
 				keymaps = {
