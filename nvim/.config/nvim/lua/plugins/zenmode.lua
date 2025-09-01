@@ -1,17 +1,17 @@
 return {
 	"folke/zen-mode.nvim",
 	config = function()
-		vim.keymap.set("n", "<leader>zZ", function()
+		vim.keymap.set("n", "<leader>zz", function()
 			require("zen-mode").setup({
 				window = {
-					width = 90,
+					width = 140,
 					options = {},
 				},
 				plugins = {
-					twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+					twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
 					wezterm = {
 						enabled = true,
-						font = "+20", -- (10% increase per step)
+						font = "+2", -- (10% increase per step)
 					},
 				},
 			})
@@ -22,7 +22,7 @@ return {
 			SetTheme()
 		end)
 
-		vim.keymap.set("n", "<leader>zz", function()
+		vim.keymap.set("n", "<leader>zZ", function()
 			require("zen-mode").setup({
 				window = {
 					width = 80,
