@@ -1,8 +1,28 @@
-# Scripting Addition
+# -- Scripting Addition --
+
+# Ensure yabai's scripting addition is loaded (required for focus control)
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # -- Yabai Behaviour --
+
+# Auto-focus a window only if none is focused (fixes Finder-steal)
+yabai -m signal --add event=space_changed \
+    action='if ! yabai -m query --windows --space | jq -e "map(select(.focused == 1)) | any" >/dev/null; then \
+                win=$(yabai -m query --windows --space | jq -r "sort_by(.last_active) | reverse | .[0].id // empty"); \
+                [ -n "$win" ] && yabai -m window --focus "$win"; \
+            fi'
+
+# When a window is destroyed, focus the most recently active remaining window on the same space
+yabai -m signal --add event=window_destroyed \
+    action='
+        # short delay lets yabai update the window tree
+        sleep 0.05
+        if ! yabai -m query --windows --space | jq -e "map(select(.focused==1)) | any" >/dev/null; then
+            win=$(yabai -m query --windows --space | jq -r "sort_by(.last_active)|reverse|.[0].id // empty")
+            [ -n "$win" ] && yabai -m window --focus "$win"
+        fi
+    '
 
 # Disable yabai management for specific apps
 yabai -m rule --add app="^System Settings$" manage=off
