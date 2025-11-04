@@ -9,15 +9,12 @@
     state: present
     cask: yes
   loop:
-    - iterm2
+    - wezterm
     - raycast
     - vlc
-    - hyperkey
     - the-unarchiver
-    - google-chrome
     - spotify
     - docker
-    - visual-studio-code
   tags: brew_casks
 
 - name: Tap Homebrew cask-fonts
