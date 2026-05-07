@@ -56,7 +56,7 @@ config.colors = {
 config.background = {
 	{
 		source = {
-			File = home .. "/.dotfiles/zsh/background.jpg",
+			File = home .. "/.dotfiles/zsh/wallpapers/background_2.png",
 		},
 		hsb = {
 			brightness = 0.025,
@@ -66,6 +66,7 @@ config.background = {
 		width = "Cover",
 		repeat_x = "NoRepeat",
 		horizontal_align = "Center",
+		vertical_align = "Middle",
 	},
 }
 
