@@ -43,7 +43,7 @@ alias zshconfig="vim ~/.zshrc"
 
 # Keymaps
 bindkey -s ^a "tmux a\n"
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "~/.dotfiles/scripts/tmux-sessionizer\n"
 bindkey -s ^n "mkcd\n"
 
 # Default Editor -- Enabling this causes my tmux to not trigger zsh keybindings for stupid reason
