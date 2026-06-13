@@ -9,6 +9,7 @@ config.font_size = 12
 config.freetype_load_flags = "FORCE_AUTOHINT"
 
 -- Window appearance and behavior
+config.native_macos_fullscreen_mode = true
 config.window_decorations = "RESIZE"
 config.window_padding = {
 	left = "0cell",
@@ -69,5 +70,10 @@ config.background = {
 		vertical_align = "Middle",
 	},
 }
+
+wezterm.on("gui-startup", function(cmd)
+	local _, _, window = wezterm.mux.spawn_window(cmd or {})
+	window:gui_window():toggle_fullscreen()
+end)
 
 return config
