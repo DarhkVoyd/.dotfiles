@@ -36,6 +36,12 @@ curl -fsSL \
   https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_night.tmTheme \
   -o "$(bat --config-dir)/themes/tokyonight_night.tmTheme"
 
+# cht.sh
+brew install rlwrap
+mkdir -p ~/.local/scripts
+curl -fsSL https://cht.sh/:cht.sh -o ~/.local/scripts/cht.sh
+chmod +x ~/.local/scripts/cht.sh
+
 # node
 npm install -g yarn eslint typescript typescript-language-server ts-node
 

@@ -17,7 +17,7 @@ export BAT_THEME=tokyonight_night
 
 # Set up custom scripts
 export SCRIPTS_HOME="$HOME/.local/scripts"
-export PATH="$SCRIPTS_HOME:$SCRIPTS_HOME/tmux-cht:$PATH"
+export PATH="$SCRIPTS_HOME:$PATH"
 
 # Set up Bun
 export BUN_INSTALL="$HOME/.bun"
