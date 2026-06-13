@@ -38,9 +38,8 @@ curl -fsSL \
 
 # cht.sh
 brew install rlwrap
-mkdir -p ~/.local/scripts
-curl -fsSL https://cht.sh/:cht.sh -o ~/.local/scripts/cht.sh
-chmod +x ~/.local/scripts/cht.sh
+curl -fsSL https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh > /dev/null
+sudo chmod +x /usr/local/bin/cht.sh
 
 # node
 npm install -g yarn eslint typescript typescript-language-server ts-node
