@@ -41,6 +41,8 @@ return {
 		table.insert(vimgrep_arguments, "!**/venv/*")
 		table.insert(vimgrep_arguments, "--iglob")
 		table.insert(vimgrep_arguments, "!**/__pycache__/*")
+		table.insert(vimgrep_arguments, "--iglob")
+		table.insert(vimgrep_arguments, "!**/target/*")
 		telescope.setup({
 			defaults = {
 				vimgrep_arguments = vimgrep_arguments,
@@ -77,6 +79,8 @@ return {
 					"!**/venv/*",
 					"--iglob",
 					"!**/__pycache__/*",
+					"--iglob",
+					"!**/target/*",
 				},
 			})
 		end, { desc = "[S]earch [F]iles" })
