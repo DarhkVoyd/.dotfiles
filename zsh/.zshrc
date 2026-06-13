@@ -15,9 +15,9 @@ source ~/.zsh_plugins/yazi.sh
 # Set up BAT
 export BAT_THEME=tokyonight_night
 
-# Set up custom scripts
-export SCRIPTS_HOME="$HOME/.local/scripts"
-export PATH="$SCRIPTS_HOME:$PATH"
+# dotfiles scripts
+export DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
+export PATH="$DOTFILES/scripts:$PATH"
 
 # Set up Bun
 export BUN_INSTALL="$HOME/.bun"

@@ -25,4 +25,3 @@ else  # Inside tmux
     fi
     tmux switch-client -t "$selected_name"
 fi
-

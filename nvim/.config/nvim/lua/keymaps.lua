@@ -30,7 +30,10 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without over
 
 -- Miscellaneous Keymaps
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Open tmux sessionizer" })
+vim.keymap.set("n", "<C-f>", function()
+	local sessionizer = vim.fn.expand("~/.dotfiles/scripts/tmux-sessionizer")
+	vim.cmd("silent !tmux neww " .. vim.fn.shellescape(sessionizer))
+end, { desc = "Open tmux sessionizer" })
 
 -- Navigation Keymaps
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Go to next quickfix item and center" })
