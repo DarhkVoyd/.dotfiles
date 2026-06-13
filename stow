@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ -z "${STOW_FOLDERS:-}" ]]; then
+  STOW_FOLDERS="bin,git,ghostty,karabiner,nvim,raycast,skhd,tmux,wezterm,yabai,yazi,zsh"
+fi
+
+if [[ -z "${DOTFILES:-}" ]]; then
+  DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
+
+pushd "$DOTFILES" > /dev/null
+
+for folder in $(echo "$STOW_FOLDERS" | sed 's/,/ /g'); do
+  echo "stow $folder"
+  stow -D "$folder" 2>/dev/null || true
+  stow "$folder"
+done
+
+popd > /dev/null
