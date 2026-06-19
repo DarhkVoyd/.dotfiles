@@ -11,6 +11,7 @@ return {
 				"typescript",
 				"rust",
 				"tsx",
+				"java",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)

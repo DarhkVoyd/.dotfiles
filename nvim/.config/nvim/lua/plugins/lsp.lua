@@ -66,6 +66,8 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+				-- nvim-jdtls manages jdtls; prevent mason-lspconfig from starting a second client
+				["jdtls"] = function() end,
 
 				["ts_ls"] = function()
 					local lspconfig = require("lspconfig")
@@ -128,6 +130,9 @@ return {
 				"black", -- python formatter
 				"pylint", -- python linter
 				"eslint_d", -- js linter
+				"google-java-format",
+				"java-debug-adapter",
+				"java-test",
 			},
 		})
 		-- require("lint").linters.pylint.cmd = "python"
