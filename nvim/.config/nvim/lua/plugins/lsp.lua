@@ -59,6 +59,7 @@ return {
 				"cssls",
 				"emmet_ls",
 				"pyright",
+				"ruff",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -120,19 +121,54 @@ return {
 						},
 					})
 				end,
+
+				["pyright"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.pyright.setup({
+						capabilities = capabilities,
+						settings = {
+							python = {
+								-- tell pyright where pyenv virtualenvs live so it resolves names from .python-version
+								venvPath = vim.fn.expand("~/.pyenv/versions"),
+								analysis = {
+									typeCheckingMode = "basic",
+									autoSearchPaths = true,
+									useLibraryCodeForTypes = true,
+									diagnosticMode = "workspace",
+									-- ruff handles diagnostics; suppress duplicate pyright warnings
+									ignore = { "*" },
+								},
+							},
+						},
+					})
+				end,
+
+				-- ruff: fast lint + import-sort diagnostics; pyright owns hover/types
+				["ruff"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.ruff.setup({
+						capabilities = capabilities,
+						on_attach = function(client)
+							client.server_capabilities.hoverProvider = false
+						end,
+					})
+				end,
 			},
 		})
 		require("mason-tool-installer").setup({
 			ensure_installed = {
-				"prettierd", -- prettier formatter
-				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"black", -- python formatter
-				"pylint", -- python linter
-				"eslint_d", -- js linter
+				"prettierd",
+				"stylua",
+				"isort",
+				"black",
+				"pylint",
+				"eslint_d",
 				"google-java-format",
 				"java-debug-adapter",
 				"java-test",
+				"ruff",
+				"debugpy",
+				"mypy",
 			},
 		})
 		-- require("lint").linters.pylint.cmd = "python"

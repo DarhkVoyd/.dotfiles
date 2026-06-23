@@ -19,7 +19,7 @@ return {
 				graphql = { "prettierd" },
 				liquid = { "prettierd" },
 				lua = { "stylua" },
-				python = { "isort", "black" },
+				python = { "ruff_format", "ruff" },
 				java = { "google-java-format" },
 			},
 			format_on_save = {
