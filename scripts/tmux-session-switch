@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Jump to the Nth session by creation order (matching C-a s)
+# Usage: tmux-session-switch <n>   (1-based)
+n=$1
+session=$(tmux ls -F "#{session_created}:#{session_name}" \
+    | sort -t: -k1 -n \
+    | sed -n "${n}p" \
+    | cut -d: -f2-)
+[ -n "$session" ] && tmux switch-client -t "$session" && tmux refresh-client -S

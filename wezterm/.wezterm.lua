@@ -20,6 +20,10 @@ config.window_padding = {
 config.window_close_confirmation = "NeverPrompt"
 config.enable_tab_bar = false
 
+-- Left Option = Meta/ESC prefix (for tmux M- bindings); right Option = macOS composed chars
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = true
+
 -- Color scheme
 config.colors = {
 	foreground = "#c7c7c7",

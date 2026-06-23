@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Outputs numbered session list for tmux status-right
+# $1 = current session name, passed from tmux as #{session_name} — always in sync
+current="$1"
+tmux ls -F "#{session_created}:#{session_name}" | sort -t: -k1 -n | awk -F: -v c="$current" '{
+    name = substr($0, index($0, ":") + 1)
+    if (name == c)
+        printf "#[fg=#87AFFF,bold]%d:%s#[fg=default,nobold]  ", NR, name
+    else
+        printf "#[fg=#4E4E4E]%d:%s#[fg=default]  ", NR, name
+}'
