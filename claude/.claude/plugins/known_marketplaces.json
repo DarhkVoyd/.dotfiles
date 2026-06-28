@@ -1,0 +1,18 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/Users/greenstitch/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-06-28T07:21:37.713Z"
+  },
+  "ponytail": {
+    "source": {
+      "source": "github",
+      "repo": "DietrichGebert/ponytail"
+    },
+    "installLocation": "/Users/greenstitch/.claude/plugins/marketplaces/ponytail",
+    "lastUpdated": "2026-06-14T17:30:49.992Z"
+  }
+}

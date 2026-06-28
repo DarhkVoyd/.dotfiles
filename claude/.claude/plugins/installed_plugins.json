@@ -1,0 +1,107 @@
+{
+  "version": 2,
+  "plugins": {
+    "ponytail@ponytail": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/ponytail/ponytail/4.2.0",
+        "version": "4.2.0",
+        "installedAt": "2026-06-14T17:31:18.170Z",
+        "lastUpdated": "2026-06-14T17:31:18.170Z",
+        "gitCommitSha": "16319c7bc91b098975d2bfb2e351398ff8aae3e7"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-06-16T06:17:12.685Z",
+        "lastUpdated": "2026-06-16T06:17:12.685Z"
+      }
+    ],
+    "jdtls-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/jdtls-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-06-16T08:38:28.707Z",
+        "lastUpdated": "2026-06-16T08:38:28.707Z"
+      }
+    ],
+    "lua-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/lua-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-06-19T05:35:48.761Z",
+        "lastUpdated": "2026-06-19T05:35:48.761Z"
+      }
+    ],
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+        "version": "unknown",
+        "installedAt": "2026-06-19T06:04:41.229Z",
+        "lastUpdated": "2026-06-28T07:21:37.790Z",
+        "gitCommitSha": "720ba8d2a36dd64ccff3ed2a1f98712587d97362"
+      }
+    ],
+    "pyright-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/pyright-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-06-19T21:11:55.763Z",
+        "lastUpdated": "2026-06-19T21:11:55.763Z"
+      }
+    ],
+    "superpowers@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/superpowers/6.0.3",
+        "version": "6.0.3",
+        "installedAt": "2026-06-23T19:22:15.713Z",
+        "lastUpdated": "2026-06-23T19:22:15.713Z",
+        "gitCommitSha": "896224c4b1879920ab573417e68fd51d2ccc9072"
+      }
+    ],
+    "code-review@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+        "version": "unknown",
+        "installedAt": "2026-06-23T19:22:15.883Z",
+        "lastUpdated": "2026-06-28T07:21:37.790Z"
+      }
+    ],
+    "code-simplifier@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/code-simplifier/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-06-23T19:22:15.987Z",
+        "lastUpdated": "2026-06-23T19:22:15.987Z"
+      }
+    ],
+    "claude-md-management@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/claude-md-management/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-06-23T19:22:16.034Z",
+        "lastUpdated": "2026-06-23T19:22:16.034Z"
+      }
+    ],
+    "rust-analyzer-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/greenstitch/.claude/plugins/cache/claude-plugins-official/rust-analyzer-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-06-28T07:06:02.048Z",
+        "lastUpdated": "2026-06-28T07:06:02.048Z"
+      }
+    ]
+  }
+}
