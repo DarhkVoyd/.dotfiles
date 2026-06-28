@@ -3,7 +3,7 @@
 	name = D V
 
 [core]
-	excludesfile = /Users/voyd/.gitignore
+	excludesfile = ~/.gitignore_global
 	pager = delta
 	editor = nvim
 
@@ -21,6 +21,7 @@
 
 [diff]
 	colorMoved = default
+	noprefix = false
 
 
 [alias]
@@ -33,3 +34,11 @@
         done; \
         git checkout main; \
     }; f"
+
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential

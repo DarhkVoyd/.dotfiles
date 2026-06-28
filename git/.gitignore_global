@@ -4,3 +4,6 @@
 .Spotlight-V100
 .Trashes
 Session.vim
+
+# Claude Code machine-local settings
+.claude/settings.local.json
