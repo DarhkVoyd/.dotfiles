@@ -1,10 +1,17 @@
 {
-  "env": {},
+  "env": {
+    "CLAUDE_CODE_ENABLE_AUTO_MODE": "1"
+  },
   "permissions": {
     "allow": [
       "Bash(git add *)",
       "Bash(git commit *)"
-    ]
+    ],
+    "defaultMode": "auto"
+  },
+  "worktree": {
+    "baseRef": "head",
+    "bgIsolation": "none"
   },
   "enabledPlugins": {
     "ponytail@ponytail": true,
@@ -28,9 +35,18 @@
     }
   },
   "effortLevel": "medium",
-  "advisorModel": "opus",
+  "pluginConfigs": {
+    "agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md-and-agents-md"
+      }
+    }
+  },
   "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true,
   "editorMode": "vim",
+  "verbose": false,
+  "autoContinueAtUsageLimit": true,
   "remoteControlAtStartup": true,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true
