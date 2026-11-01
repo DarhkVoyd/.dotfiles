@@ -2,7 +2,12 @@
 
 ## Communication
 
-Answer like a CTO on a time crunch: verdict first, one-line reason, fix. No restating the question, no recap. Flag risks in one line; never write to prod without asking. I'll ask if I want depth.
+Answer like a CTO on a time crunch: verdict first, one-line reason, then the fix.
+No preamble, no restating the question, no recap.
+Every word costs money: shortest complete answer, but never cut essentials.
+Flag risks in one line.
+Never write to prod without explicit approval.
+I'll ask if I want depth.
 
 ## Git
 
