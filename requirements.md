@@ -7,22 +7,25 @@ cd ~/.dotfiles
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-brew tap homebrew/cask-fonts
-brew tap koekeishiya/formulae
+brew tap asmvik/formulae
 brew tap jesseduffield/lazygit
+brew tap oven-sh/bun
+brew trust asmvik/formulae jesseduffield/lazygit oven-sh/bun
+
+brew install --formula tlrc
 
 brew install \
-  stow neovim ripgrep fd fzf bat git-delta git-lfs eza tldr zoxide \
-  node pyenv pyenv-virtualenv postgresql@16 circleci yazi colima docker \
+  stow neovim ripgrep fd fzf bat git-delta git-lfs eza zoxide \
+  node bun python@3.13 uv tree-sitter yazi colima docker \
   lazygit yabai skhd gh font-meslo-lg-nerd-font
 
 brew install --cask \
-  wezterm raycast vlc the-unarchiver spotify docker \
+  wezterm raycast vlc spotify \
   karabiner-elements firefox
 
-brew services start yabai
-brew services start skhd
-brew services start postgresql@16
+yabai --start-service
+skhd --start-service
+brew services start colima
 
 # shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -42,7 +45,7 @@ curl -fsSL https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh > /dev/null
 sudo chmod +x /usr/local/bin/cht.sh
 
 # node
-npm install -g yarn eslint typescript typescript-language-server ts-node
+npm install -g yarn ts-node
 
 # dotfiles
 ./stow
