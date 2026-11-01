@@ -14,22 +14,21 @@ return {
 	{
 		"linux-cultist/venv-selector.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
-		branch = "regexp",
 		ft = "python",
+		-- The `regexp` branch was merged back into `main`; on `main` the options
+		-- sit at the top level of `opts` rather than nested under `settings`.
 		opts = {
-			settings = {
-				options = {
-					notify_user_on_venv_activation = true,
-					enable_cached_venvs = true,
-					-- auto-activate last used venv when re-entering a project
-					cached_venv_automatic_activation = true,
-				},
-				search = {
-					-- search pyenv virtualenvs in addition to local .venv dirs
-					pyenv = {
-						command = "fd python$ " .. vim.fn.expand("~/.pyenv/versions") .. " --full-path -L",
-						type = "python",
-					},
+			options = {
+				notify_user_on_venv_activation = true,
+				enable_cached_venvs = true,
+				-- auto-activate last used venv when re-entering a project
+				cached_venv_automatic_activation = true,
+			},
+			search = {
+				-- search pyenv virtualenvs in addition to local .venv dirs
+				pyenv = {
+					command = "fd python$ " .. vim.fn.expand("~/.pyenv/versions") .. " --full-path -L",
+					type = "python",
 				},
 			},
 		},
