@@ -27,3 +27,5 @@ claude/.claude/plugins/synced/
 claude/.claude/shell-snapshots/
 claude/.claude/plugins/installed_plugins.json
 claude/.claude/plugins/known_marketplaces.json
+claude/.claude/chrome/
+claude/.claude/plugins/.trash/
