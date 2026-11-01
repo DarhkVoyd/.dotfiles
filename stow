@@ -18,4 +18,9 @@ for folder in $(echo "$STOW_FOLDERS" | sed 's/,/ /g'); do
   stow "$folder"
 done
 
+# Firefox profile dirs have random names, so stow can't target them; link user.js into each
+for profile in "$HOME/Library/Application Support/Firefox/Profiles"/*/; do
+  if [[ -d "$profile" ]]; then ln -sf "$DOTFILES/firefox/user.js" "${profile}user.js"; fi
+done
+
 popd > /dev/null
