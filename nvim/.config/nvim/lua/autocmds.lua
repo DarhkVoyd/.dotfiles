@@ -27,11 +27,9 @@ autocmd("BufWritePre", {
 	command = [[%s/\s\+$//e]],
 })
 
--- autocmd("BufWritePre", {
--- 	group = jsDevGroup,
--- 	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
--- 	command = "silent! EslintFixAll",
--- })
+-- ESLint auto-fix on save is handled in plugins/formatting.lua, inside
+-- conform's format_on_save hook, so that it is ordered before prettier
+-- rather than racing it. (The command is `LspEslintFixAll` now.)
 
 autocmd("LspAttach", {
 	group = user_lsp_config_group,
@@ -87,6 +85,12 @@ autocmd("LspAttach", {
 		vim.keymap.set({ "n", "v" }, "<leader>ca", function()
 			vim.lsp.buf.code_action()
 		end, opts)
+
+		-- ESLint: apply every auto-fixable rule in the buffer on demand.
+		if vim.lsp.get_client_by_id(e.data.client_id).name == "eslint" then
+			opts.desc = "[C]ode [E]slint fix all"
+			vim.keymap.set("n", "<leader>ce", "<cmd>LspEslintFixAll<CR>", opts)
+		end
 
 		opts.desc = "Show LSP references"
 		vim.keymap.set("n", "<leader>vrr", function()

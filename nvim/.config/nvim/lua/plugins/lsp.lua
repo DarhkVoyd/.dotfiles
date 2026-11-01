@@ -22,6 +22,8 @@ return {
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		-- JSON schemas for package.json, tsconfig.json, eslintrc, etc.
+		"b0o/SchemaStore.nvim",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -48,121 +50,102 @@ return {
 				},
 			},
 		})
+		-- Server configuration uses the `vim.lsp.config` API (Neovim 0.11+).
+		-- mason-lspconfig v2 dropped the `handlers` table it used to take, and
+		-- ignores it silently, so per-server settings must live here instead.
+		-- Anything not listed below just uses nvim-lspconfig's own defaults.
+
+		-- Applies to every server.
+		vim.lsp.config("*", { capabilities = capabilities })
+
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim", "it", "describe", "before_each", "after_each" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("pyright", {
+			settings = {
+				python = {
+					-- tell pyright where pyenv virtualenvs live so it resolves names from .python-version
+					venvPath = vim.fn.expand("~/.pyenv/versions"),
+					analysis = {
+						typeCheckingMode = "basic",
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						diagnosticMode = "workspace",
+						-- ruff handles diagnostics; suppress duplicate pyright warnings
+						ignore = { "*" },
+					},
+				},
+			},
+		})
+
+		-- ruff: fast lint + import-sort diagnostics; pyright owns hover/types
+		vim.lsp.config("ruff", {
+			on_attach = function(client)
+				client.server_capabilities.hoverProvider = false
+			end,
+		})
+
+		-- Tailwind v4 is configured in CSS (`@theme`, `@apply`, `@utility`), which
+		-- the vscode-css-language-server does not know about and reports as
+		-- "Unknown at rule". Tailwind's own docs recommend silencing that check.
+		vim.lsp.config("cssls", {
+			settings = {
+				css = { lint = { unknownAtRules = "ignore" } },
+				scss = { lint = { unknownAtRules = "ignore" } },
+				less = { lint = { unknownAtRules = "ignore" } },
+			},
+		})
+
+		-- jsonls gains package.json / tsconfig.json validation from SchemaStore.
+		vim.lsp.config("jsonls", {
+			settings = {
+				json = {
+					schemas = require("schemastore").json.schemas(),
+					validate = { enable = true },
+				},
+			},
+		})
+
+		-- ts_ls and emmet_ls previously carried custom settings here; upstream
+		-- defaults now cover both (monorepo/deno-aware root detection, and the
+		-- full jsx/css filetype list respectively), so they are left alone.
+
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
 				"rust_analyzer",
 				-- "denols",
 				"ts_ls",
+				"eslint",
 				"tailwindcss",
 				"html",
 				"cssls",
+				"jsonls",
 				"emmet_ls",
 				"pyright",
 				"ruff",
 			},
-			handlers = {
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
-				-- nvim-jdtls manages jdtls; prevent mason-lspconfig from starting a second client
-				["jdtls"] = function() end,
-
-				["ts_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig["ts_ls"].setup({
-						capabilities = capabilities,
-						on_attach = on_attach,
-						root_dir = lspconfig.util.root_pattern("package.json"),
-						single_file_support = false,
-					})
-				end,
-
-				-- ["denols"] = function()
-				-- 	local lspconfig = require("lspconfig")
-				-- 	lspconfig.denols.setup({
-				-- 		capabilities = capabilities,
-				-- 		on_attach = on_attach,
-				-- 		root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-				-- 	})
-				-- end,
-
-				["emmet_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.emmet_ls.setup({
-						capabilities = capabilities,
-						filetypes = {
-							"html",
-							"typescriptreact",
-							"javascriptreact",
-							"css",
-							"sass",
-							"scss",
-							"less",
-							"svelte",
-						},
-					})
-				end,
-				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim", "it", "describe", "before_each", "after_each" },
-								},
-								completion = {
-									callSnippet = "Replace",
-								},
-							},
-						},
-					})
-				end,
-
-				["pyright"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.pyright.setup({
-						capabilities = capabilities,
-						settings = {
-							python = {
-								-- tell pyright where pyenv virtualenvs live so it resolves names from .python-version
-								venvPath = vim.fn.expand("~/.pyenv/versions"),
-								analysis = {
-									typeCheckingMode = "basic",
-									autoSearchPaths = true,
-									useLibraryCodeForTypes = true,
-									diagnosticMode = "workspace",
-									-- ruff handles diagnostics; suppress duplicate pyright warnings
-									ignore = { "*" },
-								},
-							},
-						},
-					})
-				end,
-
-				-- ruff: fast lint + import-sort diagnostics; pyright owns hover/types
-				["ruff"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.ruff.setup({
-						capabilities = capabilities,
-						on_attach = function(client)
-							client.server_capabilities.hoverProvider = false
-						end,
-					})
-				end,
-			},
+			-- nvim-jdtls manages jdtls; prevent a second client being started
+			automatic_enable = { exclude = { "jdtls" } },
 		})
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				"prettierd",
+				"prettier",
 				"stylua",
 				"isort",
 				"black",
 				"pylint",
-				"eslint_d",
 				"google-java-format",
 				"java-debug-adapter",
 				"java-test",
