@@ -22,7 +22,7 @@ export PATH="$DOTFILES/scripts:$PATH"
 # Set up Bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "/Users/voyd/.bun/_bun" ] && source "/Users/voyd/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Set up Postgres@16
 POSTGRES_INSTALL='/opt/homebrew/opt/postgresql@16'
@@ -31,6 +31,13 @@ export PATH="$POSTGRES_INSTALL/bin:$PATH"
 # Set up Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# Set up Python
+# Homebrew only links the versioned `python3.13`; the unversioned `python3`/`pip3`
+# live in libexec/bin. Without this, `python3` is macOS's 3.9.6, which is too old
+# for Mason's pip-based tools (black, isort, pylint, mypy all need >= 3.10).
+PYTHON_INSTALL='/opt/homebrew/opt/python@3.13'
+export PATH="$PYTHON_INSTALL/libexec/bin:$PATH"
 
 
 # Aliases
@@ -51,3 +58,4 @@ bindkey -s ^n "mkcd\n"
 # export EDITOR="$VISUAL"
 # Yes, I did read the note about but testing it out with Yazi.
 export EDITOR=nvim
+export PATH="$HOME/.local/bin:$PATH"
