@@ -7,7 +7,6 @@ source ~/.zsh_plugins/homebrew.sh
 source ~/.zsh_plugins/zoxide.sh
 source ~/.zsh_plugins/fzf.sh
 source ~/.zsh_plugins/fzf-git.sh
-source ~/.zsh_plugins/pyenv.sh
 source ~/.zsh_plugins/history.sh
 source ~/.zsh_plugins/mkcd.sh
 source ~/.zsh_plugins/yazi.sh
@@ -23,14 +22,6 @@ export PATH="$DOTFILES/scripts:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# Set up Postgres@16
-POSTGRES_INSTALL='/opt/homebrew/opt/postgresql@16'
-export PATH="$POSTGRES_INSTALL/bin:$PATH"
-
-# Set up Volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Set up Python
 # Homebrew only links the versioned `python3.13`; the unversioned `python3`/`pip3`
