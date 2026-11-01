@@ -11,7 +11,7 @@ yabai -m signal --add event=window_destroyed \
 
 # Disable yabai management for specific apps
 yabai -m rule --add app="^System Settings$" manage=off
-yabai -m rule --add app="^FaceTime$" mnage=off
+yabai -m rule --add app="^FaceTime$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^QuickTime Player$" manage=off
 yabai -m rule --add app="^Photo Booth$" manage=off
@@ -30,14 +30,12 @@ yabai -m config window_placement second_child
 
 # Add labels to spaces
 yabai -m space 1 --label home
-yabai -m space 2 --label irc
-yabai -m space 3 --label code
-yabai -m space 4 --label web
 
-# Assign apps to spaces by label
-yabai -m rule --add app="^Cursor$" space=code
-yabai -m rule --add app="^Google Chrome$" space=web
-yabai -m rule --add app="^Firefox$" space=web
+# Open apps in native fullscreen (each gets its own fullscreen space)
+yabai -m rule --add app="^Cursor$" native-fullscreen=on
+yabai -m rule --add app="^Google Chrome$" native-fullscreen=on
+yabai -m rule --add app="^Firefox$" native-fullscreen=on
+yabai -m rule --add app="^Claude$" native-fullscreen=on
 yabai -m rule --add app="^Spotify$" native-fullscreen=on
 yabai -m rule --add app="^WezTerm$" native-fullscreen=on
 
@@ -61,4 +59,4 @@ yabai -m config mouse_action1 move
 # Set modifier + right-click drag to resize window
 yabai -m config mouse_action2 resize
 # When window is dropped in center of another window, swap them (on edges it will split it)
-yabai -m mouse_drop_action swap
+yabai -m config mouse_drop_action swap
